@@ -1,8 +1,16 @@
 [package]
 name = "hyprland-workspaces"
-version = "0.1.0"
+version = "0.0.1"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+authors = ["Atri Hegde <atri@hegdeatri.com>"]
+license = "AGPL-3.0"
+readme = "README.md"
+description = "A tool to get hyprland workspace information easily"
+homepage = "https://github.com/hegde-atri/hyprland-workspaces"
+repository = "https://github.com/hegde-atri/hyprland-workspaces"
+keywords = ["cli", "hyprland", "utility"]
+categories = ["command-line-utilities"]
 
 [dependencies]
+clap = { version = "4.1.11", features = ["derive"] }
+which = "4.4.0"

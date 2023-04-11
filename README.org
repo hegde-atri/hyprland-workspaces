@@ -1,0 +1,11 @@
+#+title: Hyprland-workspaces
+#+author: Atri Hegde
+#+description: An application written in rust that uses hyprctl to return workspace data.
+
+An application written in rust that uses ~hyprctl~ to return workspace data.
+
+* Preface
+
+I needed workspace data to display them on my ~eww~ bar.
+
+I made this as I couldn't write shell script to do this, and I was having issues with the default script from [[https://wiki.hyprland.org][Hyprland's website]].
