@@ -1,7 +1,7 @@
 /// Temporary class whilst I sort out my utils class
 ///
 use std::{
-    io::{Error, ErrorKind, Write},
+    io::{Error, ErrorKind},
     path::{Path, PathBuf},
     process::{Command, Output},
 };
@@ -39,13 +39,13 @@ pub fn exec(cmd: &str, cwd: &Path) -> Result<Output, Error> {
     // Check if path exists
     if !cwd.exists() {
         return Err(Error::new(ErrorKind::Other, "Specified path is invalid!"));
-        // path is not a directory
-        if !cwd.is_dir() {
-            return Err(Error::new(
-                ErrorKind::Other,
-                "Specified path is not a directory",
-            ));
-        }
+    }
+    // path is not a directory
+    if !cwd.is_dir() {
+        return Err(Error::new(
+            ErrorKind::Other,
+            "Specified path is not a directory",
+        ));
     }
     // Now execute the command
     if cfg!(target_os = "windows") {
