@@ -15,7 +15,7 @@ fn main() {
 
     match args.action {
         Action::Windowname => {
-            get_active_windowname();
+            println!("{}", get_active_windowname().unwrap());
         }
         Action::Workspaces => {
             get_workspaces_json();
@@ -29,7 +29,6 @@ fn main() {
 /// Print out Workspace information parsed from `hyprctl workspaces` with the workspace numbers in json format
 fn get_workspaces_json() {
     let _ = get_workspaces();
-    println!("Workspaces json");
 }
 
 /// Get workspace information parsed from `hyprctl workspaces` with the workspace numbers.
@@ -48,7 +47,6 @@ fn get_workspaces() -> Result<Vec<Workspace>, io::Error> {
                     return Workspace::from_string(s).unwrap();
                 })
                 .collect();
-            println!("{:?}", list);
             return Ok(list);
         }
         Err(err) => Err(err),
@@ -56,9 +54,22 @@ fn get_workspaces() -> Result<Vec<Workspace>, io::Error> {
 }
 
 /// Print out the String containing the windowname
-fn get_active_windowname() {
-    println!("Windowname");
-    todo!();
+fn get_active_windowname() -> Result<String, io::Error> {
+    match exec("hyprctl activewindow", command::get_pwd(None).as_path()) {
+        Ok(o) => {
+            let output = String::from_utf8(o.stdout).unwrap();
+
+            let name = output
+                .split(" ")
+                .nth(3)
+                .unwrap()
+                .split("\n")
+                .nth(0)
+                .unwrap();
+            return Ok(name[0..name.len() - 1].to_string());
+        }
+        Err(err) => Err(err),
+    }
 }
 
 /// Return eww widgets based on workspaces open
