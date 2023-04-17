@@ -33,25 +33,23 @@ fn get_workspaces_json() {
 }
 
 /// Get workspace information parsed from `hyprctl workspaces` with the workspace numbers.
-fn get_workspaces() -> Result<String, io::Error> {
+fn get_workspaces() -> Result<Vec<Workspace>, io::Error> {
     match exec("hyprctl workspaces", command::get_pwd(None).as_path()) {
         Ok(o) => {
             // Parse output to contain only required fields
-            let mut output = String::from_utf8(o.stdout).unwrap();
-            output = output.split("workspace ID ").collect();
-            let output_list = output.split("\n").collect::<Vec<_>>();
+            let output = String::from_utf8(o.stdout).unwrap();
+            let output_list = output.split("workspace ID ").collect::<Vec<_>>();
             let list: Vec<Workspace> = output_list
                 .iter()
+                .filter(|s| !s.is_empty())
                 .map(|s| {
-                    // keep
-                    Workspace {
-                        id: 1,
-                        status: 1,
-                        monitor: 1,
-                    }
+                    println!("{}", s.trim());
+                    // HACK
+                    return Workspace::from_string(s).unwrap();
                 })
                 .collect();
-            return Ok(output);
+            println!("{:?}", list);
+            return Ok(list);
         }
         Err(err) => Err(err),
     }
