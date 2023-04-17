@@ -1,7 +1,7 @@
 # Hyprland-workspaces
 
 [![Licence](https://img.shields.io/github/license/hegde-atri/hyprland-workspaces?color=red)](https://github.com/hegde-atri/hyprland-workspaces/blob/main/LICENCE)
-[![Version](https://img.shields.io/crates/v/hyprland-workspaces?color=9cf)](https:://crates.io/crates/hyprland-workspaces/versions)
+[![Version](https://img.shields.io/crates/v/hyprland-workspaces?color=9cf)](https://crates.io/crates/hyprland-workspaces/versions)
 [![Downloads](https://img.shields.io/crates/d/hyprland-workspaces)](https://crates.io/crates/hyprland-workspaces)
 
 
