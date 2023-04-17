@@ -16,6 +16,8 @@ I made this as I couldn't write shell script to do this, and I was having issues
 
 # Prerequisites
 
+- Hyprland (Program uses `hyprctl`)
+
 # How to install
 
 You can install this by `cargo` or building the project yourself
