@@ -12,7 +12,7 @@ An application written in rust that uses `hyprctl` to return workspace data.
 
 I needed workspace data to display them on my `eww` bar.
 
-I made this as I couldn't write shell script to do this, and I was having issues with the default script from [[https://wiki.hyprland.org][Hyprland's website]].
+I made this as I couldn't write shell script to do this, and I was having issues with the default script from [Hyprland's website](https://wiki.hyprland.org)
 
 # Prerequisites
 
