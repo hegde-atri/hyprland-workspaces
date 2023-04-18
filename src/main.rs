@@ -28,9 +28,10 @@ fn main() {
 
 /// Print out Workspace information parsed from `hyprctl workspaces` with the workspace numbers in json format
 fn get_workspaces_json() {
-    for workspace in get_workspaces().unwrap() {
-        println!("{}", serde_json::to_string(&workspace).unwrap());
-    }
+    println!(
+        "{}",
+        serde_json::to_string(&get_workspaces().unwrap()).unwrap()
+    );
 }
 
 /// Get workspace information parsed from `hyprctl workspaces` with the workspace numbers.
