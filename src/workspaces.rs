@@ -33,7 +33,6 @@ impl Workspace {
             .collect::<String>()
             .parse::<usize>()
             .unwrap();
-        println!("{}", windows);
         let active = match exec("hyprctl activewindow", command::get_pwd(None).as_path()) {
             Ok(o) => {
                 let output = String::from_utf8(o.stdout).unwrap();

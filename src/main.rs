@@ -28,7 +28,9 @@ fn main() {
 
 /// Print out Workspace information parsed from `hyprctl workspaces` with the workspace numbers in json format
 fn get_workspaces_json() {
-    let _ = get_workspaces();
+    for workspace in get_workspaces().unwrap() {
+        println!("{}", serde_json::to_string(&workspace).unwrap());
+    }
 }
 
 /// Get workspace information parsed from `hyprctl workspaces` with the workspace numbers.
@@ -42,7 +44,6 @@ fn get_workspaces() -> Result<Vec<Workspace>, io::Error> {
                 .iter()
                 .filter(|s| !s.is_empty())
                 .map(|s| {
-                    println!("{}", s.trim());
                     // HACK
                     return Workspace::from_string(s).unwrap();
                 })
