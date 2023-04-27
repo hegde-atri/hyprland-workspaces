@@ -10,7 +10,7 @@ pub struct HyprWorkspaceArgs {
 
 #[derive(Debug, Subcommand)]
 pub enum Action {
-    /// Returns workspace info in json format { id, status, monitor}.
+    /// Returns workspace info in json format {id, status, monitor}.
     ///
     /// id is the workspace number.
     ///
@@ -23,6 +23,6 @@ pub enum Action {
     Workspaces,
     /// Returns active window name as a string.
     Windowname,
-    /// Returns my eww widgets for workspaces. TODO
+    /// Does not work.
     Eww,
 }

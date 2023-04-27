@@ -11,6 +11,7 @@ pub struct Workspace {
     /// 1: occupied workspace
     /// 2: active workspace
     pub status: usize,
+    pub class: String,
     // TODO
     pub monitor: usize,
 }
@@ -20,6 +21,12 @@ impl Workspace {
         Ok(Workspace {
             id: src.split_once(" ").unwrap().0.parse::<usize>().unwrap(),
             status: Workspace::get_status(src).unwrap(),
+            class: match Workspace::get_status(src).unwrap() {
+                1 => "empty-workspace".to_string(),
+                2 => "occupied-workspace".to_string(),
+                3 => "active-workspace".to_string(),
+                _ => "".to_string(),
+            },
             monitor: 1,
         })
     }
@@ -33,16 +40,16 @@ impl Workspace {
             .collect::<String>()
             .parse::<usize>()
             .unwrap();
-        let active = match exec("hyprctl activewindow", command::get_pwd(None).as_path()) {
+        let active = match exec("hyprctl monitors", command::get_pwd(None).as_path()) {
             Ok(o) => {
                 let output = String::from_utf8(o.stdout).unwrap();
                 let aw = output
                     .lines()
-                    .filter(|s| s.contains("workspace:"))
-                    .map(|s| s.split(" ").nth(1).unwrap())
+                    .filter(|s| s.contains("active workspace:"))
+                    .map(|s| s.split(" ").nth(2).unwrap())
                     .collect::<String>()
                     .parse::<usize>()
-                    .unwrap();
+                    .unwrap_or(1);
                 Ok(id == aw)
             }
             Err(err) => Err(err),

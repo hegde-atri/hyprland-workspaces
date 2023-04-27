@@ -41,7 +41,7 @@ fn get_workspaces() -> Result<Vec<Workspace>, io::Error> {
             // Parse output to contain only required fields
             let output = String::from_utf8(o.stdout).unwrap();
             let output_list = output.split("workspace ID ").collect::<Vec<_>>();
-            let list: Vec<Workspace> = output_list
+            let mut list: Vec<Workspace> = output_list
                 .iter()
                 .filter(|s| !s.is_empty())
                 .map(|s| {
@@ -49,6 +49,8 @@ fn get_workspaces() -> Result<Vec<Workspace>, io::Error> {
                     return Workspace::from_string(s).unwrap();
                 })
                 .collect();
+            // Sort by id
+            list.sort_by(|a, b| a.id.cmp(&b.id));
             return Ok(list);
         }
         Err(err) => Err(err),
@@ -75,6 +77,33 @@ fn get_active_windowname() -> Result<String, io::Error> {
 }
 
 /// Return eww widgets based on workspaces open
+/// Does not work
 fn get_widgets() {
-    let _ = get_workspaces();
+    let workspaces = get_workspaces().unwrap();
+    let mut widget = String::new();
+    const START: &str = "\n(box :space-evenly true \n";
+    const END: &str = "\n)";
+
+    widget.push_str(START);
+
+    // Make the workspace box widgets
+    for (i, w) in workspaces.iter().enumerate() {
+        widget.push_str("(box :class \"workspace-entry");
+        match w.status.to_string().as_str() {
+            "1" => widget.push_str(" occupied"),
+            "2" => widget.push_str(" empty"),
+            "3" => widget.push_str(" current"),
+            _ => (),
+        }
+        widget.push_str("\"");
+        widget.push_str(" (label :text \"");
+        widget.push_str(w.id.to_string().as_str());
+        widget.push_str("\")");
+        widget.push_str(")");
+        if i != workspaces.len() - 1 {
+            widget.push_str("\n");
+        }
+    }
+    widget.push_str(END);
+    println!("{}", widget);
 }
