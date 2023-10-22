@@ -1,4 +1,4 @@
-# ⚠️ Hyprland-workspaces is getting a complete re-rewrite for v0.0.5+ at [codeberg](https://codeberg.org/hegde-atri/hyprland-helper) ⚠️
+# ⚠️ Hyprland-workspaces is getting a complete re-rewrite for v0.0.5+ at [GitLab](https://gitlab.com/hegde-atri/hypr-helper) ⚠️
 ## This project is being renamed from hyprland-workspaces to hypr-helper.
 
 This is to avoid confusion with another popular project.
