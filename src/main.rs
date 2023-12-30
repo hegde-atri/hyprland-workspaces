@@ -11,19 +11,15 @@ mod command;
 mod workspaces;
 
 fn main() {
-    let args = HyprWorkspaceArgs::parse();
-
-    match args.action {
-        Action::Windowname => {
-            println!("{}", get_active_windowname().unwrap());
-        }
-        Action::Workspaces => {
-            get_workspaces_json();
-        }
-        Action::Eww => {
-            get_widgets();
-        }
-    }
+    println!("         This crate has been renamed/moved to hypr-helper.        ");
+    println!("                Please install the crate by either                ");
+    println!("");
+    println!("1. Running cargo install hypr-helper");
+    println!("2. Manually building from https://gitlab.com/hegde-atri/hypr-helper");
+    println!("");
+    println!("                   Thank you for using my tool!                   ");
+    println!("      Please use the renamed crate for the much awaited features  ");
+    println!("                     and improved performance                     ")
 }
 
 /// Print out Workspace information parsed from `hyprctl workspaces` with the workspace numbers in json format

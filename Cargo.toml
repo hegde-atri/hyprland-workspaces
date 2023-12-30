@@ -1,11 +1,11 @@
 [package]
 name = "hyprland-workspaces"
-version = "0.0.4"
+version = "1.0.0"
 edition = "2021"
-authors = ["Atri Hegde <atri@hegdeatri.com>"]
+authors = ["Atri Hegde <dev.hegdeatri@gmail.com>"]
 license = "AGPL-3.0"
 readme = "README.md"
-description = "A tool to get hyprland workspace information easily"
+description = "CRATE HAS BEEN RENAMED TO hypr-helper"
 homepage = "https://github.com/hegde-atri/hyprland-workspaces"
 repository = "https://github.com/hegde-atri/hyprland-workspaces"
 keywords = ["cli", "hyprland", "utility"]

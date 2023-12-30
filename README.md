@@ -29,6 +29,8 @@ I made this as I couldn't write shell script to do this, and I was having issues
 
 You can install this by `cargo` or building the project yourself
 
+> This crate has been renamed to `hypr-helper`. Visit the updated repository for more details
+
 ``` sh
 # Using cargo
 cargo install hyprland-workspaces
