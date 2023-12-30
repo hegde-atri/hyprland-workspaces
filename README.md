@@ -9,7 +9,7 @@ I stopped using github with most of my public and private repositories, since I 
 
 [![Licence](https://img.shields.io/github/license/hegde-atri/hyprland-workspaces?color=red)](https://github.com/hegde-atri/hyprland-workspaces/blob/main/LICENCE)
 [![Version](https://img.shields.io/crates/v/hyprland-workspaces?color=9cf)](https://crates.io/crates/hyprland-workspaces/versions)
-[![Crates.io Total Downloads](https://img.shields.io/crates/d/hypr-helper?label=hyprland-workspaces%20(deprecated)%20downloads)](https://crates.io/crates/hyprland-workspaces)
+[![Crates.io Total Downloads](https://img.shields.io/crates/d/hyprland-workspaces?label=hyprland-workspaces%20(deprecated)%20downloads)](https://crates.io/crates/hyprland-workspaces)
 [![Crates.io Total Downloads](https://img.shields.io/crates/d/hypr-helper?label=hypr-helper%20downloads&color=green)](https://crates.io/creates/hypr-helper)
 ![GitLab all issues](https://img.shields.io/gitlab/issues/all/hegde-atri%2Fhypr-helper)
 
